@@ -27,3 +27,13 @@ console.log(x);
 
 //manipulating the css
 document.querySelector('.dice').style.display = 'none';
+
+function btn(){
+    //do something here
+}
+btn();
+
+document.querySelector('btn btn--roll').addEventListener('click', btn); //callback function it can be reused and it has a name
+//document.querySelector('btn btn--roll').addEventListener('click', function(){
+    //do something here
+})//annonymus function it doenst have a name and cant be reused
