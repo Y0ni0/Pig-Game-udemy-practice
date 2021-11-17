@@ -1,4 +1,4 @@
-'use strict';
+
 /* Game Rules
 
 -The game has 2 players, playing in rounds 
@@ -7,4 +7,23 @@
 -the player can choose to 'hold', which means that his Round score gets added to his GLOBAL score. 
 after the, its's the next players turn
 -The first player to reach 100 points on GLOBAL score wins the game
-*/
+*/ 
+
+var score, roundScore, activePlayer, dice;
+
+score = [0,0];
+roundScore = 0;
+activePlayer = 1;
+
+dice = Math.floor(Math.random()*6) + 1;
+
+//setter
+document.querySelector('#current--' + activePlayer).textContent = dice;
+//document.querySelector('#current--' + activePlayer).innerHTML = '<strong>' + dice + '</strong>';
+
+//getter
+var x = document.querySelector('#score--0').textContent;
+console.log(x);
+
+//manipulating the css
+document.querySelector('.dice').style.display = 'none';
