@@ -13,19 +13,19 @@ var score, roundScore, activePlayer;
 
 score = [0,0];
 roundScore = 0;
-activePlayer = 1;
+activePlayer = 0;
 
 //manipulating the css
 document.querySelector('.dice').style.display = 'none';
 
-document.getElementById('score--0').textContent = 0;
-document.getElementById('current--0').textContent = 0;
-document.getElementById('score--1').textContent = 0;
-document.getElementById('current--1').textContent = 0;
+document.getElementById('score-0').textContent = 0;
+document.getElementById('current-0').textContent = 0;
+document.getElementById('score-1').textContent = 0;
+document.getElementById('current-1').textContent = 0;
 
 
 //annonymus function it doenst have a name and cant be reused
-document.querySelector('.btn--roll').addEventListener('click', function() {
+document.querySelector('.btn-roll').addEventListener('click', function() {
     //1. Random number
     var dice = Math.floor(Math.random()*6) + 1;
 
@@ -35,7 +35,21 @@ document.querySelector('.btn--roll').addEventListener('click', function() {
     diceDom.src = 'dice-' + dice + '.png'; 
 
     //3. update the round score If the rolled number was not a 1
-})
+    if (dice !== 1){
+        //add score
+        roundScore += dice;
+        document.querySelector('#current-' + activePlayer).textContent = roundScore;
+    } else {
+        //next player
+        activePlayer === 0 ? activePlayer =1 : activePlayer = 0; //ternary operator for an if else statement
+        roundScore = 0;
+        document.getElementById('current-0').textcontent = 0;
+        document.getElementById('current-1').textContent = 0;
+
+        document.querySelector('.player-0-panel').classList.remove('active');
+        document.querySelector('.player-1-panel').classList.add('active');
+    }
+});
 
 
 
