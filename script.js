@@ -83,7 +83,7 @@ function nextPlayer(){
 
     document.querySelector('.dice').style.display = 'none';
 }
-
+//next tasks
 
 
 
