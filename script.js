@@ -11,18 +11,7 @@ after the, its's the next players turn
 
 var score, roundScore, activePlayer;
 
-score = [0,0];
-roundScore = 0;
-activePlayer = 0;
-
-//manipulating the css
-document.querySelector('.dice').style.display = 'none';
-
-document.getElementById('score-0').textContent = 0;
-document.getElementById('current-0').textContent = 0;
-document.getElementById('score-1').textContent = 0;
-document.getElementById('current-1').textContent = 0;
-
+init();
 
 //annonymus function it doenst have a name and cant be reused
 //the event listener for the roll button
@@ -83,8 +72,29 @@ function nextPlayer(){
 
     document.querySelector('.dice').style.display = 'none';
 }
-//next tasks
+//new game button 
 
+document.querySelector('.btn-new').addEventListener('click', function(){
+    init();
+});
+
+//init function
+
+function init(){
+    score = [0,0];
+    roundScore = 0;
+    activePlayer = 0;
+
+    //manipulating the css
+    document.querySelector('.dice').style.display = 'none';
+
+    document.getElementById('score-0').textContent = 0;
+    document.getElementById('current-0').textContent = 0;
+    document.getElementById('score-1').textContent = 0;
+    document.getElementById('current-1').textContent = 0;
+    document.getElementById('name-0').textContent = 'Player 1';
+    document.getElementById('name-1').textContent = 'Player 2';
+}
 
 
 
