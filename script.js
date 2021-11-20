@@ -9,14 +9,15 @@ after the, its's the next players turn
 -The first player to reach 100 points on GLOBAL score wins the game
 */ 
 
-var score, roundScore, activePlayer;
+var score, roundScore, activePlayer, gamePlaying;
 
 init();
 
 //annonymus function it doenst have a name and cant be reused
 //the event listener for the roll button
 document.querySelector('.btn-roll').addEventListener('click', function() {
-    //1. Random number
+   if(gamePlaying){
+         //1. Random number
     var dice = Math.floor(Math.random()*6) + 1;
 
     //2.Display the number 
@@ -33,11 +34,14 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
         //next player
         nextPlayer();
     }
+   }
+   
 });
 //event listener for the hold button 
 document.querySelector('.btn-hold').addEventListener('click', function(){
+    if(gamePlaying){
         //add current score to Global score
-            score[activePlayer] += roundScore;
+        score[activePlayer] += roundScore;
 
         //update the UI
             document.querySelector('#score-' + activePlayer).textContent = score[activePlayer];
@@ -49,11 +53,13 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
             document.querySelector('.dice').style.display = 'none';
             document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
             document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
+            gamePlaying = false; 
         } else {
              //next player
             nextPlayer();
-        }
-        
+        } 
+    }    
+    
 });
 
 //next player function 
@@ -84,6 +90,7 @@ function init(){
     score = [0,0];
     roundScore = 0;
     activePlayer = 0;
+    gamePlaying = true;
 
     //manipulating the css
     document.querySelector('.dice').style.display = 'none';
@@ -98,7 +105,7 @@ function init(){
     document.querySelector('.player-1-panel').classList.remove('winner');
     document.querySelector('.player-0-panel').classList.remove('active');
     document.querySelector('.player-1-panel').classList.remove('active');
-    document.querySelector('.player-1-panel').classList.add('active');
+    document.querySelector('.player-0-panel').classList.add('active');
 }
 
 
