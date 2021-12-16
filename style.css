@@ -117,16 +117,18 @@ button {
 
 button:hover { font-weight: 600; }
 button:hover i { margin-right: 20px; }
-p :hover{
-    text-decoration: underline;
-    font-weight: bold;
-    cursor: pointer;
-}
+
 
 button:focus {
     outline: none;
 }
-input:hover { font-weight: 600;}
+input:hover { 
+    font-weight: bold ;
+    cursor: pointer;
+}
+.final-score :focus{
+    outline: none;
+}
 
 i {
     color: #EB4D4D;
@@ -157,14 +159,30 @@ i {
 .winner { background-color: #f7f7f7; }
 .winner .player-name { font-weight: 300; color: #EB4D4D; }
 
+
+.final-score{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 520px;
+    color: #555;
+    text-align: center;
+    font: lato;
+    font-size: 18px;
+    padding: 10px;
+    width: 160px;
+   
+}
+
+
+/*
 .win-score{
     display: flex;
     position: absolute;
     flex-direction: row;
     justify-content: center;
     border-radius: 10px ;
-    left: 50%;
-    top: 340px;
+    
     transform: translateX(-45%);
     background-color: #EB4D4D ;
     width: 220px;
@@ -173,6 +191,7 @@ i {
     padding: 5px;
     box-shadow:  0px 10px 60px rgba(0, 0, 0, 0.10) ;
 }
+
 .win-score input{
     width: 40px;
     border: none;
@@ -188,3 +207,4 @@ i {
     padding-bottom: 3px;
     align-self: center;
 }
+*/

@@ -9,7 +9,7 @@ after the, its's the next players turn
 -The first player to reach 100 points on GLOBAL score wins the game
 */ 
 
-var score, roundScore, activePlayer, gamePlaying ,previousDice;
+var score, roundScore, activePlayer, gamePlaying ,previousDice, winningScore;
 
 init();
 
@@ -37,6 +37,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     } else {
         //next player
         nextPlayer();
+       
     }
     previousDice = dice;
    }   
@@ -49,10 +50,19 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
 
         //update the UI
             document.querySelector('#score-' + activePlayer).textContent = score[activePlayer];
+            var input = document.querySelector('.final-score').value;
 
+            //undefined , 0, null or "" are coerced to false
+            //anything else is coerced t true 
+            if(input){
+                winningScore = input;
+            }
+            else{
+                winningScore = 30; 
+            }
 
         //check if the player won the game 
-        if (score[activePlayer] >= 100){
+        if (score[activePlayer] >= winningScore){
             document.querySelector('#name-' + activePlayer).textContent = 'winner!';
             document.querySelector('.dice').style.display = 'none';
             document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
@@ -69,10 +79,11 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
 //next player function 
 function nextPlayer(){
    
-    activePlayer === 0 ? activePlayer =1 : activePlayer = 0; //ternary operator for an if else statement
+    activePlayer === 1 ? activePlayer =0 : activePlayer = 1; //ternary operator for an if else statement
     roundScore = 0;
-    document.getElementById('current-0').textcontent = 0;
     document.getElementById('current-1').textContent = 0;
+    document.getElementById('current-0').textcontent = 0;
+    
 
     document.querySelector('.player-0-panel').classList.toggle('active');
     document.querySelector('.player-1-panel').classList.toggle('active');
