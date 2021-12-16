@@ -117,6 +117,11 @@ button {
 
 button:hover { font-weight: 600; }
 button:hover i { margin-right: 20px; }
+p :hover{
+    text-decoration: underline;
+    font-weight: bold;
+    cursor: pointer;
+}
 
 button:focus {
     outline: none;
@@ -155,13 +160,31 @@ i {
 .win-score{
     display: flex;
     position: absolute;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: 10px ;
     left: 50%;
     top: 340px;
     transform: translateX(-45%);
-    background-color:#d89090 ;
-    width: 250px;
+    background-color: #EB4D4D ;
+    width: 220px;
     height: 40px;
     align-items: stretch;
     padding: 5px;
     box-shadow:  0px 10px 60px rgba(0, 0, 0, 0.10) ;
+}
+.win-score input{
+    width: 40px;
+    border: none;
+    border-radius: 5px;
+    background-color:none;
+    color: rgb(88, 87, 87);
+    text-align: center;   
+}
+.win-score p{
+    color: #fff;
+    text-decoration: wavy;
+    padding-right: 15px;
+    padding-bottom: 3px;
+    align-self: center;
 }
